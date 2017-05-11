@@ -4,7 +4,7 @@
 #	SysInfo OCF Resource Agent
 #	It records (in the CIB) various attributes of a node
 #
-# Copyright (c) 2004 SUSE LINUX AG, Lars Marowsky-Brée
+# Copyright (c) 2004 SUSE LINUX AG, Lars Marowsky-BrÃ©e
 #                    All Rights Reserved.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -236,7 +236,7 @@ SysInfoStats() {
     #	  'tail -n <c>' to the equivalent 'tail -<c>'.
     for disk in "/" ${OCF_RESKEY_disks}; do
 	unset disk_free disk_label
-	disk_free=`df -h ${disk} | tail -1 | awk '{print $4}'`
+	disk_free=`df -BM ${disk} | tail -1 | awk '{print $4}'`
 	if [ x != x"$disk_free" ]; then
 	    disk_label=`echo $disk | sed -e 's#^/$#root#;s#^/*##;s#/#_#g'`
 	    disk_free=`SysInfo_hdd_units $disk_free`
